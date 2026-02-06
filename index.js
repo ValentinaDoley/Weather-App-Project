@@ -53,16 +53,43 @@ function displayWeatherInfo(data){
     // to change the text content of each elements
     cityDisplay.textContent = city;
     tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`;
+    humidityDisplay.textContent = `Humidity: ${humidity}%`;
+    descDisplay.textContent = description;
+    weatherEmoji.textContent = getWeatherEmoji(id);
 
     cityDisplay.classList.add("cityDisplay");
     tempDisplay.classList.add("tempDisplay");
+    humidityDisplay.classList.add("humidityDisplay");
+    descDisplay.classList.add("descDisplay");
+    weatherEmoji.classList.add("weatherEmoji");
 
     card.appendChild(cityDisplay);
     card.appendChild(tempDisplay);
+    card.appendChild(humidityDisplay);
+    card.appendChild(descDisplay);
+    card.appendChild(weatherEmoji);
 }
 
 function getWeatherEmoji(weatherId){
 
+    switch(true){
+        case (weatherId >= 200 && weatherId < 300):
+            return "⛈️"; //thunderstorm
+        case (weatherId >= 300 && weatherId < 400):
+            return "🌦️"; //drizzle
+        case (weatherId >= 500 && weatherId < 600):
+            return "🌧️"; //rain
+        case (weatherId >= 600 && weatherId < 700):
+            return "❄️"; //snow
+        case (weatherId >= 700 && weatherId < 800):
+            return "🌫️"; //atmosphere (fog, mist, etc.)
+        case (weatherId === 800):
+            return "☀️"; //clear sky
+        case (weatherId > 801 && weatherId < 900):
+            return "☁️"; //clouds
+        default:
+            return "❓"; //unknown weather condition
+    }
 }
 
 function displayError(message){
