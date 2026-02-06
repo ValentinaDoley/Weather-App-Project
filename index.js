@@ -4,7 +4,7 @@ const cityInput = document.querySelector(".cityInput");
 const card = document.querySelector(".card");
 const apiKey = "48c13817ea94f2896436b161f6832664";
 
-weatherForm.addEventListener("submit", event => {
+weatherForm.addEventListener("submit", async event => {
     event.preventDefault(); // to prevent the default form submission behavior of refreshing
 
     const city = cityInput.value;
@@ -38,7 +38,8 @@ async function getWeatherData(city){
 
 function displayWeatherInfo(data){
     //object destructuring to access data within an object
-    const {name: city, main:{temp, humidity}, 
+    const {name: city,
+           main:{temp, humidity}, 
            weather: [{description, id}]} = data; // double object destructuring for accessing weather's array of objects
     
     card.textContent = ""; //to display the card
@@ -51,8 +52,13 @@ function displayWeatherInfo(data){
     const weatherEmoji = document.createElement("p");
     // to change the text content of each elements
     cityDisplay.textContent = city;
+    tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}°C`;
+
+    cityDisplay.classList.add("cityDisplay");
+    tempDisplay.classList.add("tempDisplay");
 
     card.appendChild(cityDisplay);
+    card.appendChild(tempDisplay);
 }
 
 function getWeatherEmoji(weatherId){
