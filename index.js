@@ -5,7 +5,7 @@ const card = document.querySelector(".card");
 const apiKey = "48c13817ea94f2896436b161f6832664";
 
 weatherForm.addEventListener("submit", event => {
-    event.preventDefault();
+    event.preventDefault(); // to prevent the default form submission behavior of refreshing
 
     const city = cityInput.value;
 
@@ -62,7 +62,7 @@ function getWeatherEmoji(weatherId){
 function displayError(message){
     const errorDisplay = document.createElement("p"); //create a new paragraph element
     errorDisplay.textContent = message; // =to the parameter
-    errorDisplay.classList.add("errorDisplay"); //add a css class
+    errorDisplay.classList.add("errorDisplay"); // to add css class
 
     card.textContent = "";
     card.style.display = "flex";

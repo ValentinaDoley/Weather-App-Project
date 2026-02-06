@@ -22,14 +22,14 @@ button[type="submit"]{
     padding: 10px 20px;
     font-weight: bold;
     font-size: 2rem;
-    background-color: hsl(120, 79%, 60%);
+    background-color: hsl(120, 37%, 53%);
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
 }
 button[type="submit"]:hover{
-    background-color: hsl(120, 29%, 58%);
+    background-color: hsl(120, 20%, 46%);
 }
 .card{
     background: linear-gradient(160deg, hsl(224, 100%, 66%), hsl(357, 100%, 71%) ); /*slow-transition between colors, (angle, color) */
